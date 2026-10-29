@@ -97,9 +97,9 @@ $('#stopBtn').addEventListener('click',()=>{audio.pause();audio.currentTime=0;bu
 audio.addEventListener('play',buttons);audio.addEventListener('pause',buttons);audio.addEventListener('ended',()=>{buttons();status('Preview finished. Choose another track to continue.')});
 </script>
 <div style="text-align:center;padding:15px">
-  <a href="https://www.youtube.com/results?search_query=Malayalam+full+songs"
-     target="_blank"
-     style="background:#ff4d9d;color:white;padding:14px;border-radius:12px;text-decoration:none;display:inline-block">
+  
+    <a href="#" onclick="window.open('https://www.youtube.com/results?search_query='+encodeURIComponent((document.querySelector('#nowTitle').textContent||document.querySelector('#query').value||'Malayalam songs')+' '+(document.querySelector('#nowArtist').textContent||'')),'_blank');return false;"
+target="_blank" style="background:#ff4d9d;color:white;padding:14px;border-radius:12px;text-decoration:none;display:inline-block">
     ▶ YouTube-ൽ മുഴുവൻ പാട്ടുകൾ കേൾക്കുക
   </a>
 </div>
