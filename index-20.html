@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#100d19"><meta name="description" content="Thinq Music Live — discover music and play available previews.">
+<title>Thinq Music Live</title>
+<style>
+:root{--bg:#100d19;--panel:#1b1726;--text:#fff;--muted:#aaa2b8;--pink:#ff4d9d;--violet:#9a6bff;--line:#342b43}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#42205a 0,transparent 38%),var(--bg);color:var(--text);font:16px/1.5 system-ui,sans-serif;padding-bottom:100px}.wrap{max-width:1100px;margin:auto;padding:22px 18px}.top{display:flex;align-items:center;justify-content:space-between;gap:10px}.brand{display:flex;align-items:center;gap:10px;font-size:1.2rem;font-weight:800}.logo{display:grid;place-items:center;width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--pink),var(--violet));font-size:23px}.live{color:#ff7db6;font-size:.78rem;font-weight:750;letter-spacing:1px}.gradient{background:linear-gradient(90deg,#ff69ad,#b49aff);-webkit-background-clip:text;background-clip:text;color:transparent}.hero{padding:40px 0 24px}.hero h1{font-size:clamp(2.3rem,7vw,4.4rem);line-height:1.04;letter-spacing:-2px;margin:10px 0}.hero p{color:var(--muted);max-width:600px;margin:12px 0 24px}.search{display:flex;gap:10px;max-width:720px}.search input{min-width:0;flex:1;background:#211b2d;color:white;border:1px solid #443650;border-radius:15px;padding:15px;outline:none}.search input:focus{border-color:var(--pink)}button{cursor:pointer;font:inherit}.primary{background:linear-gradient(100deg,var(--pink),var(--violet));color:white;border:0;border-radius:14px;padding:13px 20px;font-weight:750}.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}.chip{border:1px solid var(--line);background:#1b1726;color:#e3dbea;border-radius:999px;padding:8px 13px}.section-head{display:flex;align-items:end;justify-content:space-between;margin:24px 0 14px;gap:10px}.section-head h2{margin:0;font-size:1.35rem}.muted,.artist{color:var(--muted);font-size:.84rem}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:14px}.card{min-width:0;background:var(--panel);border:1px solid #2c2439;border-radius:17px;padding:11px}.cover{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;background:#30263e}.track-title{font-weight:700;font-size:.92rem;margin:9px 0 2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.artist{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.play{margin-top:10px;width:100%;background:#35253f;color:white;border:0;border-radius:10px;padding:9px;font-weight:650}.empty{border:1px dashed #493a59;border-radius:18px;padding:28px;text-align:center;color:var(--muted);grid-column:1/-1}.status{color:var(--muted);font-size:.84rem;margin-top:12px;min-height:22px}.notice{font-size:.8rem;color:var(--muted);margin-top:20px}.player{position:fixed;bottom:0;left:0;right:0;background:rgba(19,15,28,.96);backdrop-filter:blur(18px);border-top:1px solid var(--line);padding:11px 15px}.player-inner{max-width:1100px;margin:auto;display:flex;align-items:center;gap:12px}.mini{width:48px;height:48px;object-fit:cover;border-radius:9px;background:#30263e}.now{min-width:0;flex:1}.now strong,.now span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.now span{color:var(--muted);font-size:.8rem}.ctrl{background:#2b2238;color:white;border:0;border-radius:50%;width:40px;height:40px;font-size:18px}.ctrl.main{background:linear-gradient(135deg,var(--pink),var(--violet))}@media(min-width:800px){.wrap{padding-top:28px}.hero{padding-top:55px}.grid{grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}}@media(max-width:480px){.wrap{padding:16px 13px}.search{flex-direction:column}.search .primary{width:100%}.player-inner{gap:8px}.mini{width:42px;height:42px}.ctrl{width:37px;height:37px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<header class="top"><div class="brand"><div class="logo">♫</div><span>thinq <span class="gradient">music live</span></span></div><div class="live">● DISCOVER MUSIC</div></header>
+<section class="hero"><div class="live">YOUR SOUND. YOUR WORLD.</div><h1>Find your next<br><span class="gradient">favourite song.</span></h1><p>Discover artists, search songs in different languages, and listen to available previews.</p>
+<form class="search" id="searchForm"><input id="query" placeholder="Search songs, artists, albums…" aria-label="Search songs and artists"><button class="primary" type="submit">Search music ↗</button></form>
+<div class="chips"><button class="chip" data-q="Malayalam hits">Malayalam</button><button class="chip" data-q="Tamil hits">Tamil</button><button class="chip" data-q="Hindi hits">Hindi</button><button class="chip" data-q="English pop">English Pop</button><button class="chip" data-q="lofi chill">Lo-fi</button><button class="chip" data-q="A R Rahman">A. R. Rahman</button></div><div class="status" id="status" role="status">Search for a song or choose a music category.</div></section>
+<section><div class="section-head"><h2 id="resultsTitle">Explore music</h2><span class="muted" id="count"></span></div><div class="grid" id="results"><div class="empty">🎧<br><strong>Your next favourite is waiting.</strong><br>Search for a song, singer, or language to get started.</div></div></section>
+<p class="notice">Song previews and artwork are provided by the iTunes Search service. Preview availability varies by track and region. This is an independent music discovery demo, not an official Resso or Apple Music app. Full-song streaming requires appropriate music licensing.</p>
+</main>
+<footer class="player"><div class="player-inner"><img class="mini" id="miniCover" alt="" src="https://placehold.co/100x100/30263e/ffffff?text=%E2%99%AB"><div class="now"><strong id="nowTitle">Nothing playing yet</strong><span id="nowArtist">Choose a track preview</span></div><button class="ctrl" id="stopBtn" aria-label="Stop preview">■</button><button class="ctrl main" id="playBtn" aria-label="Play or pause preview">▶</button></div><audio id="audio" preload="none"></audio></footer>
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const audio = $("audio");
+  let tracks = [];
+  let current = -1;
+
+  function setStatus(message) { $("status").textContent = message; }
+  function esc(value) {
+    return String(value || "").replace(/[&<>"']/g, function (ch) {
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch];
+    });
+  }
+
+  function render(items) {
+    const box = $("results");
+    if (!items.length) {
+      box.innerHTML = '<div class="empty">No songs found. Try another search.</div>';
+      $("count").textContent = "0 tracks";
+      return;
+    }
+    box.innerHTML = items.map(function (track, i) {
+      return '<article class="card">' +
+        '<img class="cover" loading="lazy" src="' + esc(track.artworkUrl100 || "") + '" alt="Album artwork">' +
+        '<div class="track-title">' + esc(track.trackName) + '</div>' +
+        '<div class="artist">' + esc(track.artistName) + '</div>' +
+        '<button class="play" type="button" data-play="' + i + '">' +
+        (i === current && !audio.paused ? "❚❚ Pause" : "▶ Play preview") +
+        '</button></article>';
+    }).join("");
+    $("count").textContent = items.length + " tracks";
+    box.querySelectorAll("[data-play]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        playTrack(Number(button.getAttribute("data-play")));
+      });
+    });
+  }
+
+  async function searchMusic(query) {
+    query = (query || "").trim();
+    if (!query) {
+      setStatus("Please type a song or singer name first.");
+      $("query").focus();
+      return;
+    }
+    $("query").value = query;
+    $("resultsTitle").textContent = 'Results for "' + query + '"';
+    setStatus("Searching music…");
+    $("results").innerHTML = '<div class="empty">Searching music…</div>';
+    $("count").textContent = "";
+    try {
+      const response = await fetch(
+        "https://itunes.apple.com/search?term=" + encodeURIComponent(query) + "&media=music&entity=song&limit=24"
+      );
+      if (!response.ok) throw new Error("Search service unavailable");
+      const data = await response.json();
+      tracks = (data.results || []).filter(function (track) {
+        return track.trackName && track.artistName;
+      });
+      current = -1;
+      render(tracks);
+      setStatus(tracks.length
+        ? "Songs found. Tap Play preview on a song."
+        : "No songs found for this search. Try another name.");
+    } catch (error) {
+      $("results").innerHTML =
+        '<div class="empty">Music search could not connect. Check your internet connection and try again.<br><br>' +
+        '<a style="color:#ff83bd" target="_blank" rel="noopener" href="https://music.apple.com/search?term=' +
+        encodeURIComponent(query) + '">Open search in Apple Music ↗</a></div>';
+      setStatus("Search connection failed. Try the Apple Music search link shown below.");
+    }
+  }
+
+  function playTrack(index) {
+    const track = tracks[index];
+    if (!track) return;
+    if (!track.previewUrl) {
+      setStatus("A preview is not available for this song. Try another one.");
+      return;
+    }
+    if (current === index && audio.src) {
+      if (audio.paused) {
+        audio.play().catch(function () { setStatus("Could not start audio. Tap Play again."); });
+      } else {
+        audio.pause();
+      }
+      updatePlayer();
+      return;
+    }
+    current = index;
+    audio.src = track.previewUrl;
+    $("miniCover").src = track.artworkUrl100 || "";
+    $("nowTitle").textContent = track.trackName;
+    $("nowArtist").textContent = track.artistName;
+    audio.play().then(function () {
+      setStatus("Playing preview: " + track.trackName);
+    }).catch(function () {
+      setStatus("Preview did not start. Check your internet and media volume, then try another song.");
+    });
+    render(tracks);
+  }
+
+  function updatePlayer() {
+    $("playBtn").textContent = audio.paused ? "▶" : "Ⅱ";
+    if (tracks.length) render(tracks);
+  }
+
+  $("searchForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+    searchMusic($("query").value);
+  });
+  document.querySelectorAll("[data-q]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      searchMusic(button.getAttribute("data-q"));
+    });
+  });
+  $("playBtn").addEventListener("click", function () {
+    if (!audio.src) {
+      searchMusic("Malayalam hits");
+      return;
+    }
+    if (audio.paused) {
+      audio.play().catch(function () { setStatus("Could not start audio. Try a song preview again."); });
+    } else {
+      audio.pause();
+    }
+    updatePlayer();
+  });
+  $("stopBtn").addEventListener("click", function () {
+    audio.pause();
+    audio.currentTime = 0;
+    updatePlayer();
+  });
+  audio.addEventListener("play", updatePlayer);
+  audio.addEventListener("pause", updatePlayer);
+  audio.addEventListener("ended", function () {
+    updatePlayer();
+    setStatus("Preview finished. Choose another song.");
+  });
+
+  setStatus("Ready. Type a song name or tap a music category.");
+})();
+</script>
+</body></html>
