@@ -96,5 +96,12 @@ $('#playBtn').addEventListener('click',()=>{if(!audio.src){if(tracks.length)play
 $('#stopBtn').addEventListener('click',()=>{audio.pause();audio.currentTime=0;buttons()});
 audio.addEventListener('play',buttons);audio.addEventListener('pause',buttons);audio.addEventListener('ended',()=>{buttons();status('Preview finished. Choose another track to continue.')});
 </script>
+<div style="text-align:center;padding:15px">
+  <a href="https://www.youtube.com/results?search_query=Malayalam+full+songs"
+     target="_blank"
+     style="background:#ff4d9d;color:white;padding:14px;border-radius:12px;text-decoration:none;display:inline-block">
+    ▶ YouTube-ൽ മുഴുവൻ പാട്ടുകൾ കേൾക്കുക
+  </a>
+</div>
 </body>
 </html>
