@@ -1,4 +1,4 @@
-<!doctype html>
+Sudarsanan <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -227,5 +227,14 @@ target="_blank" style="background:#ff4d9d;color:white;padding:14px;border-radius
     ▶ YouTube-ൽ മുഴുവൻ പാട്ടുകൾ കേൾക്കുക
   </a>
 </div>
+<script>
+async function findMusicVideo(song, artist) {
+  const frame = document.getElementById('youtubePlayer');
+  if (!frame) return;
+
+  frame.src = 'https://www.youtube.com/embed?listType=search&list='
+    + encodeURIComponent(song + ' ' + artist);
+}
+</script>
 </body>
 </html>  
