@@ -209,6 +209,17 @@ $('#playBtn').addEventListener('click',()=>{if(!audio.src){if(tracks.length)play
 $('#stopBtn').addEventListener('click',()=>{audio.pause();audio.currentTime=0;buttons()});
 audio.addEventListener('play',buttons);audio.addEventListener('pause',buttons);audio.addEventListener('ended',()=>{buttons();status('Preview finished. Choose another track to continue.')});
 </script>
+<div style="max-width:600px;margin:20px auto;padding:12px;">
+  <h3 style="color:white;text-align:center;">🎵 Aaradhike — Full Song</h3>
+  <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;">
+    <iframe src="https://www.youtube.com/embed/dAezp422I_A"
+      title="Aaradhike YouTube Player"
+      style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+      allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
 <div style="text-align:center;padding:15px">
   
     <a href="#" onclick="window.open('https://www.youtube.com/results?search_query='+encodeURIComponent((document.querySelector('#nowTitle').textContent||document.querySelector('#query').value||'Malayalam songs')+' '+(document.querySelector('#nowArtist').textContent||'')),'_blank');return false;"
