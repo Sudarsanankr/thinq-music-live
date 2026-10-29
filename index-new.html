@@ -6,7 +6,36 @@
 <meta name="theme-color" content="#100d19">
 <meta name="description" content="Thinq Music Live — discover songs and play available previews.">
 <title>Thinq Music Live</title>
-<style>
+/* Thinq Music Live Neon Glow */
+body {
+  background:
+    radial-gradient(
+      ellipse at 10% 15%,
+      rgba(255, 20, 180, 0.13),
+      transparent 35%
+    ),
+    radial-gradient(
+      ellipse at 90% 25%,
+      rgba(139, 53, 255, 0.16),
+      transparent 38%
+    ),
+    #000 !important;
+}
+
+.brand .logo {
+  box-shadow:
+    0 0 8px #ff32c5,
+    0 0 22px rgba(255, 50, 197, 0.55),
+    0 0 38px rgba(139, 53, 255, 0.3);
+}
+
+.gradient {
+  filter: drop-shadow(0 0 8px rgba(255, 47, 189, 0.35));
+}
+
+button.primary {
+  box-shadow: 0 0 16px rgba(255, 47, 189, 0.2);
+}
 :root{--bg:#100d19;--panel:#1b1726;--text:#fff;--muted:#aaa2b8;--pink:#ff4d9d;--violet:#9a6bff;--line:#342b43}
 *{box-sizing:border-box}
 body{margin:0;background:#000;color:var(--text);font:16px/1.5 system-ui,-apple-system,sans-serif;padding-bottom:100px}
