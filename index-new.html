@@ -13,7 +13,22 @@ body{margin:0;background:#000;color:var(--text);font:16px/1.5 system-ui,-apple-s
 .wrap{max-width:1100px;margin:auto;padding:22px 18px}
 .top{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .brand{display:flex;align-items:center;gap:10px;font-size:1.2rem;font-weight:800}
-.logo{display:grid;place-items:center;width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--pink),var(--violet));font-size:23px}
+.logo{
+display:grid;
+place-items:center;
+width:54px;
+height:54px;
+border-radius:50%;
+background:#08030d;
+border:2px solid #ff32c5;
+box-shadow:0 0 8px #ff32c5,0 0 24px #8b35ff77;
+overflow:hidden
+}
+.logo svg{
+width:100%;
+height:100%;
+display:block
+}
 .live{color:#ff7db6;font-size:.78rem;font-weight:750;letter-spacing:1px}
 .gradient{background:linear-gradient(90deg,#ff69ad,#b49aff);-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero{padding:40px 0 24px}
@@ -49,7 +64,20 @@ h2{font-size:1.25rem}
 </head>
 <body>
 <main class="wrap">
-<header class="top"><div class="brand"><div class="logo">♫</div><span>thinq <span class="gradient">music live</span></span></div><div class="live">● DISCOVER MUSIC</div></header>
+<header class="top"><div class="brand"><<div class="logo">
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="neon" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#ff72d2"/>
+<stop offset="1" stop-color="#8b35ff"/>
+</linearGradient>
+</defs>
+<circle cx="50" cy="50" r="45" fill="#08030d" stroke="url(#neon)" stroke-width="3"/>
+<path d="M58 18v39a15 15 0 1 1-8-13V29l25-7v12l-17 5" fill="none" stroke="url(#neon)" stroke-width="7" stroke-linecap="round"/>
+<circle cx="48" cy="57" r="10" fill="#100014" stroke="#ff62d4" stroke-width="3"/>
+<path d="M45 51l11 6-11 7z" fill="#fff"/>
+</svg>
+</div><span>thinq <span class="gradient">music live</span></span></div><div class="live">● DISCOVER MUSIC</div></header>
 <section class="hero"><div class="live">YOUR SOUND. YOUR WORLD.</div><h1>Find your next<br><span class="gradient">favourite song.</span></h1><p>Discover songs, artists and music from different languages. Listen to available previews.</p>
 <form class="search" id="searchForm"><input id="query" placeholder="Search songs, artists, albums…" aria-label="Search songs and artists"><button class="primary" type="submit">Search music ↗</button></form>
 <div class="chips"><button class="chip" data-q="Malayalam hits">Malayalam</button><button class="chip" data-q="Tamil hits">Tamil</button><button class="chip" data-q="Hindi hits">Hindi</button><button class="chip" data-q="English pop">English Pop</button><button class="chip" data-q="lofi chill">Lo-fi</button><button class="chip" data-q="A R Rahman">A. R. Rahman</button></div>
