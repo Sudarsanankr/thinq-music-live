@@ -1,4 +1,4 @@
-Sudarsanan <!doctype html>
+ <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -196,11 +196,43 @@ function search(q){
  script.src='https://itunes.apple.com/search?term='+encodeURIComponent(q)+'&entity=song&limit=24&callback='+cb;
  document.body.appendChild(script)
 }
-function playTrack(i){
- const t=tracks[i];if(!t||!t.previewUrl){status('No preview is available for this track. Try another song.');return}
- if(current===i&&audio.src){if(audio.paused)audio.play().catch(()=>status('Tap Play again to start audio.'));else audio.pause();buttons();return}
- current=i;audio.src=t.previewUrl;$('#miniCover').src=t.artworkUrl100||'';$('#nowTitle').textContent=t.trackName;$('#nowArtist').textContent=t.artistName;
- audio.play().then(()=>status('Playing a song preview.')).catch(()=>status('Tap Play to start audio playback.'));findMusicVideo(t.trackName, t.artistName);render(tracks)
+async function playTrack(i){
+ const t=tracks[i];
+ if(!t)return;
+
+ current=i;
+ render(tracks);
+
+ if(t.previewUrl){
+  audio.src=t.previewUrl;
+  audio.play().catch(()=>{});
+ }
+
+ status('Finding music video...');
+
+ try{
+  const url='https://broken-unit-e0bc.sudarsanankr49.workers.dev/?q='+
+  encodeURIComponent(t.trackName+' '+t.artistName);
+
+  const response=await fetch(url);
+  const data=await response.json();
+
+  if(!data.videos||!data.videos.length){
+   status('No video found. Try another song.');
+   return;
+  }
+
+  const video=data.videos[0];
+  const player=$('#youtubePlayer');
+
+  if(player){
+   player.src='https://www.youtube.com/embed/'+video.videoId+'?playsinline=1';
+   status('Music video found: '+video.title);
+  }
+
+ }catch(error){
+  status('Video search failed. Please try again.');
+ 
 }
 function buttons(){$('#playBtn').textContent=audio.paused?'▶':'Ⅱ';render(tracks)}
 $('#searchForm').addEventListener('submit',e=>{e.preventDefault();search($('#query').value)});
