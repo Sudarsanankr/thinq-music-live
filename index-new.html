@@ -233,6 +233,7 @@ async function playTrack(i){
  }catch(error){
   status('Video search failed. Please try again.');
  
+ }
 }
 function buttons(){$('#playBtn').textContent=audio.paused?'▶':'Ⅱ';render(tracks)}
 $('#searchForm').addEventListener('submit',e=>{e.preventDefault();search($('#query').value)});
